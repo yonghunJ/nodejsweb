@@ -10,6 +10,4 @@ app.get('/start', function(req, res){
 });
 
 
-server.listen(8080, '127.0.0.1', function() {
-  console.log('Server listen on port ' + server.address().port);
-});
+server.listen(process.env.PORT, () => {})
