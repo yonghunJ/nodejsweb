@@ -11,8 +11,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:false}));
 
 
-// var server = http.createServer(app);
-// server.listen(process.env.PORT, () => {})
+
 app.get(['/','/index'], function(req, res) {
   res.render('index');
 });
@@ -53,7 +52,7 @@ app.get('/blog', function(req, res){
  res.render('blog');
 });
 
-
-app.listen(3000,function(){
-  console.log('server is working');
+// var server = http.createServer(app);
+// server.listen(process.env.PORT, () => {})
+app.listen(process.env.PORT,function(){
 });
