@@ -1,13 +1,59 @@
 var express = require('express');
 var http = require('http');
-var app = express();
-var server = http.createServer(app); app.get('/', function(req, res) {
-  res.send('KCB Homepage');
+var express = require('express');
+var bodyParser = require('body-parser');
+var app =express();
+var fs = require('fs');
+app.locals.pretty = true;
+app.set('views', './views');
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended:false}));
+
+
+// var server = http.createServer(app);
+// server.listen(process.env.PORT, () => {})
+app.get(['/','/index'], function(req, res) {
+  res.render('index');
+});
+app.get('/events', function(req, res){
+ res.render('events');
 });
 
-app.get('/start', function(req, res){
-  res.send('start page');
+app.get('/notice', function(req, res){
+  res.render('notice');
+});
+
+app.get('/research', function(req, res){
+ res.render('research');
+});
+app.get('/scholarship', function(req, res){
+ res.render('scholarship');
+});
+
+app.get('/login', function(req, res){
+ res.render('login');
+});
+
+app.get('/register', function(req, res){
+ res.render('register');
 });
 
 
-server.listen(process.env.PORT, () => {})
+
+app.get('/about', function(req, res){
+ res.render('about');
+});
+
+app.get('/courses', function(req, res){
+ res.render('courses');
+});
+
+app.get('/blog', function(req, res){
+ res.render('blog');
+});
+
+
+app.listen(3000,function(){
+  console.log('server is working');
+});
